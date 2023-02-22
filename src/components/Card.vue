@@ -79,13 +79,13 @@ export default {
   box-shadow: 0 3px 10px 3px rgba(0,0,0,0.2);
 }
 .front .card-content{
-  background: url("../assets/images/def.jpg") no-repeat center center;
+  background: url("../assets/images/def.png") no-repeat center center;
   background-size:90px 90px ;
   height: 100%;
   width: 100%;
 }
 .front .card-content{
-  background: url("../assets/images/def.jpg") no-repeat center center;
+  background: url("../assets/images/def.png") no-repeat center center;
   background-size:90px 90px ;
   height: 100%;
   width: 100%;

@@ -4,7 +4,7 @@
     <div class="screen_inner">
   <card-flip v-for="(card, index) in cardsContext"
              :key="index"
-             :imgBackFaceUrl="`/images/${card}.jpg`"
+             :imgBackFaceUrl="`/images/${card}.png`"
              :card="{index,value:card}"
              :ref="`card-${index}`"
              @onFlip="checkRule($event)"
