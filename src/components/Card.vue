@@ -25,6 +25,9 @@ export default {
       type:String,
       required:true,
     },
+    isclick:{
+      type : Boolean
+    }
 
   },
   data(){
@@ -36,7 +39,7 @@ export default {
   methods:{
     onToggleFlipCard(){
       console.log( this.isclick);
-      if (this.isDisable) return;
+      if (this.isclick) return;
      this.isFliped = !this.isFliped;
      if(this.isFliped) this.$emit("onFlip",this.card);
     },

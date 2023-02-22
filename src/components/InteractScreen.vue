@@ -8,6 +8,7 @@
              :card="{index,value:card}"
              :ref="`card-${index}`"
              @onFlip="checkRule($event)"
+               :isclick="this.isclick"
   />
     </div>
   </div>
@@ -43,14 +44,15 @@ export default {
   methods:{
     checkRule(card){
       if(this.rules.length === 2) return false;
+
       this.rules.push(card);
-      if(this.rules.length === 2) this.isclick=true;
-      console.log( this.isclick)
+      if(this.rules.length === 2) this.isclick = true;
       if(this.rules.length === 2 && this.rules[0].value === this.rules[1].value){
         setTimeout(()=>{
           this.$refs[`card-${this.rules[0].index}`][0].onEnableHidden();
           this.$refs[`card-${this.rules[1].index}`][0].onEnableHidden();
           this.rules =[];
+          this.isclick = false;
         },800)
         const hiddenElement = document.querySelectorAll(".screen .card.disable");
         if (hiddenElement && hiddenElement.length == this.cardsContext.length-2){
@@ -62,6 +64,7 @@ export default {
           this.$refs[`card-${this.rules[0].index}`][0].onFlipBackCard();
           this.$refs[`card-${this.rules[1].index}`][0].onFlipBackCard();
           this.rules =[];
+          this.isclick = false;
         },800)
       }else {
         return false;
