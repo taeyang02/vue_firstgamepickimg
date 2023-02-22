@@ -2,7 +2,7 @@
   <div class="screen">
     <h1 style="margin: auto;">TaeYang_Games</h1>
     <div class="screen_inner">
-  <card-flip v-for="(card, index) in cardsContext"
+    <card-flip v-for="(card, index) in cardsContext"
              :key="index"
              :imgBackFaceUrl="`/images/${card}.png`"
              :card="{index,value:card}"
@@ -19,6 +19,7 @@
 <script>
 import CardFlip from "@/components/Card.vue";
 import Test from "@/components/Test.vue";
+
 export default {
   name: "InteractScreen",
   props:{
@@ -36,12 +37,15 @@ export default {
   data(){
     return{
       rules:[],
+      isclick:false,
     }
   },
   methods:{
     checkRule(card){
       if(this.rules.length === 2) return false;
       this.rules.push(card);
+      if(this.rules.length === 2) this.isclick=true;
+      console.log( this.isclick)
       if(this.rules.length === 2 && this.rules[0].value === this.rules[1].value){
         setTimeout(()=>{
           this.$refs[`card-${this.rules[0].index}`][0].onEnableHidden();
@@ -49,8 +53,6 @@ export default {
           this.rules =[];
         },800)
         const hiddenElement = document.querySelectorAll(".screen .card.disable");
-        console.log(hiddenElement);
-
         if (hiddenElement && hiddenElement.length == this.cardsContext.length-2){
           setTimeout(()=>{this.$emit("onFinish")},920);
         }

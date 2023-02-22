@@ -6,7 +6,7 @@
     </div>
     <div class="card-face card-face back" @click="onToggleFlipCard">
       <div class="card-content">
-        <img v-bind:src="`/src/assets${imgBackFaceUrl}`" style="width: 90px;height: 90px;padding-right: 18px" >
+        <img v-bind:src="`${imgBackFaceUrl}`" style="width: 90px;height: 90px;padding-right: 18px" >
       </div>
     </div>
   </div>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Card",
   props:{
@@ -23,7 +24,8 @@ export default {
     imgBackFaceUrl:{
       type:String,
       required:true,
-    }
+    },
+
   },
   data(){
     return{
@@ -33,6 +35,7 @@ export default {
   },
   methods:{
     onToggleFlipCard(){
+      console.log( this.isclick);
       if (this.isDisable) return;
      this.isFliped = !this.isFliped;
      if(this.isFliped) this.$emit("onFlip",this.card);
@@ -45,6 +48,8 @@ export default {
     onEnableHidden(){
       this.isDisable = true;
     },
+
+
   }
 }
 </script>
@@ -79,17 +84,17 @@ export default {
   box-shadow: 0 3px 10px 3px rgba(0,0,0,0.2);
 }
 .front .card-content{
-  background: url("../assets/images/def.png") no-repeat center center;
+  background: url("../../public/images/def.png") no-repeat center center;
   background-size:90px 90px ;
   height: 100%;
   width: 100%;
 }
-.front .card-content{
-  background: url("../assets/images/def.png") no-repeat center center;
-  background-size:90px 90px ;
-  height: 100%;
-  width: 100%;
-}
+/*.front .card-content{*/
+/*  background: url("../../public/images/def.png") no-repeat center center;*/
+/*  background-size:90px 90px ;*/
+/*  height: 100%;*/
+/*  width: 100%;*/
+/*}*/
 
 .card.disable .card_inner{
   display: none;
